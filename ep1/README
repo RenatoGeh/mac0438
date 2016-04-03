@@ -1,3 +1,17 @@
+/*******************************************************************/
+/** MAC 438 - Programação Concorrente                             **/
+/** IME-USP - Primeiro Semestre de 2016                           **/
+/** Prof. Marcel Parolin Jackowski                                **/
+/**                                                               **/
+/** Primeiro Exercício-Programa                                   **/
+/** Arquivo: README                                               **/
+/**                                                               **/
+/** Renato Lui Geh - 8536030                                      **/
+/**                                                               **/
+/** 04/04/2016                                                    **/
+/*******************************************************************/
+
+
 ===============
 1. Código Fonte
 ===============
@@ -18,7 +32,7 @@ Para executar:
   $ cd src
   $ ./run m n r s
 
-Onde (m, n, r, s) equivale às entradas (sort, fib, buffon, integ).
+Onde (m, n, r, s) equivalem às entradas (sort, fib, buffon, integ).
 
 III. Debug/GDB
 
@@ -57,4 +71,4 @@ Os grafos estão na pasta doc/graphs. Para gerar as imagens dos arquivos .dot, f
 
   $ ./gen graph_name.dot
 
-Para isso precisa-se dos comandos de geração de grafos do Graphviz dotty.
+Para isso precisam-se dos comandos de geração de grafos do Graphviz dotty.
