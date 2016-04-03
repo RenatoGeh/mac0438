@@ -11,6 +11,12 @@ LOG: Resulting sorted array:
 }
 LOG: Process sort ready to join.
 LOG: Process 1 joined.
+LOG: Process 4 created.
+LOG: Process integ started.
+LOG: Computed area (t/s)*sec(1) = 0.88663
+LOG: Expected area int_0^1 sec(x) dx = 1.2261911708835
+LOG: Process integ ready to join.
+LOG: Process 4 joined.
 LOG: Process 3 created.
 LOG: Process buffon started.
 LOG: Generating 100000 samples...
@@ -18,12 +24,6 @@ LOG: Computed probability Pr(0 > d + L*sin(theta) > G) = t/r = 0.63463
 LOG: Expected probability Pr(0 > d + L*sin(theta) > G) = (2/PI)*(L/G) = 0.63662
 LOG: Process buffon ready to join.
 LOG: Process 3 joined.
-LOG: Process 4 created.
-LOG: Process integ started.
-LOG: Computed area (t/s)*sec(1) = 0.88663
-LOG: Expected area int_0^1 sec(x) dx = 1.2261911708835
-LOG: Process integ ready to join.
-LOG: Process 4 joined.
 LOG: Process 2 created.
 LOG: Process fib started.
 LOG: Computing the 40-th Fibonacci number...

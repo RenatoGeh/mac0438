@@ -1,3 +1,17 @@
+/*******************************************************************/
+/** MAC 438 - Programação Concorrente                             **/
+/** IME-USP - Primeiro Semestre de 2016                           **/
+/** Prof. Marcel Parolin Jackowski                                **/
+/**                                                               **/
+/** Primeiro Exercício-Programa                                   **/
+/** Arquivo: fib.c                                                **/
+/**                                                               **/
+/** Renato Lui Geh - 8536030                                      **/
+/**                                                               **/
+/** 04/04/2016                                                    **/
+/*******************************************************************/
+
+
 #include "fib.h"
 
 #include <stdio.h>
