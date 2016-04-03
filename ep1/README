@@ -1,0 +1,60 @@
+===============
+1. Código Fonte
+===============
+
+I. Compilar
+
+Para compilar, faça:
+
+  $ cd src
+  $ make (all)
+
+Onde (.) é um argumento opcional.
+
+II. Executar
+
+Para executar:
+
+  $ cd src
+  $ ./run m n r s
+
+Onde (m, n, r, s) equivale às entradas (sort, fib, buffon, integ).
+
+III. Debug/GDB
+
+Para compilar com a flag -g, faça:
+
+  $ cd src
+  $ make (all) DEBUG=true
+
+IV. Observações
+
+HEAP SORT
+
+Foi implementado o heap sort seguindo as seguintes referências:
+
+http://www.personal.kent.edu/~rmuhamma/Algorithms/MyAlgorithms/Sorting/heapSort.htm
+http://geeksquiz.com/heap-sort/
+
+===================
+2. Exercícios Bônus
+===================
+
+I. Compilar
+
+O Makefile considera que seu PDF viewer é zathura.
+
+  $ cd doc
+  $ make
+
+Para apenas compilar:
+
+  $ make no_viewer
+
+II. Grafos
+
+Os grafos estão na pasta doc/graphs. Para gerar as imagens dos arquivos .dot, faça:
+
+  $ ./gen graph_name.dot
+
+Para isso precisa-se dos comandos de geração de grafos do Graphviz dotty.
