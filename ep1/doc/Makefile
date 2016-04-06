@@ -1,16 +1,16 @@
 f_exs = exercises
-e_compile = pdflatex -shell-escape $(f_exs).tex
+e_compile = pdflatex $(f_exs).tex
 
 
 all: exs
 
 no_viewer:
 	make clean; \
-	$(e_compile);
+	$(e_compile) && $(e_compile)
 
 exs:
 	make clean; \
-	$(e_compile); \
+	$(e_compile) && $(e_compile);
 	zathura $(f_exs).pdf
 
 .PHONY: clean

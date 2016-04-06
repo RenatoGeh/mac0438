@@ -19,11 +19,12 @@
 
 #include <unistd.h>
 #include <sys/wait.h>
+#include <sys/types.h>
 
 int gp_counter = 0;
 
-int new_proc(int (*proc_callback) (int), int arg, int *res) {
-  int pid = fork();
+pid_t new_proc(int (*proc_callback) (int), int arg, int *res) {
+  pid_t pid = fork();
   ++gp_counter;
   if (pid < 0) {
     /* Error. */
@@ -32,7 +33,6 @@ int new_proc(int (*proc_callback) (int), int arg, int *res) {
     /* Child process. */
     LOG("Process %d created.", gp_counter);
     *res = proc_callback(arg);
-    LOG("Process %d joined.", gp_counter);
     exit(0);
   }
 
@@ -51,6 +51,10 @@ int uirand(int min, int max) {
 
 double udrand(double min, double max) {
   return (urand()*(max-min+1)+min);
+}
+
+double udmrand(double max) {
+  return (((double)rand())/((double)RAND_MAX))*max;
 }
 
 double uderand(double min, double max) {

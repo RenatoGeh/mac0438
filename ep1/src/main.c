@@ -17,6 +17,7 @@
 
 #include <unistd.h>
 #include <sys/wait.h>
+#include <sys/types.h>
 
 /*#define DEBUG*/
 
@@ -30,6 +31,7 @@ int (*fcs[4]) (int) = {sort, fib, buffon, integ};
 
 int main(int argc, char *args[]) {
   int argv[4], i, r;
+  pid_t pids[4];
 
   if (argc < 5)
     fprintf(stderr, "Too few arguments! Terminating execution.");
@@ -39,9 +41,12 @@ int main(int argc, char *args[]) {
 
   /* Launches all processes "simultaneously". */
   for (i=0;i<4;++i)
-    new_proc(fcs[i], argv[i], &r);
+    pids[i] = new_proc(fcs[i], argv[i], &r);
 
-  wait(0);
+  for (i=0;i<4;++i) {
+    waitpid(pids[i], NULL, 0);
+    LOG("Process %d joined.", i);
+  }
 
   return 0;
 }

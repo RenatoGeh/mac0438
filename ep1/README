@@ -54,6 +54,8 @@ http://geeksquiz.com/heap-sort/
 2. Exercícios Bônus
 ===================
 
+O PDF está em doc/exercises.pdf pré-compilado.
+
 I. Compilar
 
 O Makefile considera que seu PDF viewer é zathura.

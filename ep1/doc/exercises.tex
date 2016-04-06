@@ -1,6 +1,6 @@
 \documentclass{amsart}
 
-\usepackage[english]{babel}
+\usepackage[brazilian]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{mathtools}
@@ -73,31 +73,76 @@ o grafo representa paternidade de processos, considere a definição abaixo:
 \begin{definition}
   Um processo é um grafo direcional $H=(V_H,E_H)$. Um processo $H$ tem pai $G=(V_G,E_G)$ sse existe
   um nó $i\in V_H$ que tem formato de caixa e possue uma aresta não-direcionada $(i,j)$, onde
-  $j\in V_G$. Diz-se então que $G$ é pai de $H$ e $H$ é filho de $G$.
+  $j\in V_G$. Diz-se então que $G$ é pai de $H$ e $H$ é filho de $G$. O grafo $H$ será chamado de
+  subgrafo de processo.
 \end{definition}
 
 Vamos chamar esse diagrama como Grafo de Processos (GP). Um grafo direcional que possue um caminho
 $(i,j)$ que passa somente por arestas direcionais é um processo. Todo subgrafo que possue tal
 caminho é um processo do GP\@. Todas as folhas de um GP devem ser nós |kill|.
 
-\section{Soluções}
+Por causa do tamanho dos grafos de processos, a explicação da análise estará separada dos grafos
+de processos. A Seção~\ref{solutions} explica a análise, enquanto que a Seção~\ref{graphs} mostra
+os grafos de processos.
+
+\section{Soluções}~\label{solutions}
 
 \subsection{Programa 1}
 
+Neste programa são criados quatro processos filhos e um processo pai. O Grafo de Processos está
+ilustrado na Figura~\ref{p1}.
 
+Assim que é criado o primeiro processo filho, o processo pai entra na condição de sair do laço
+|for|. No primeiro processo filho, este age como se fosse o processo pai, criando um novo processo
+que é filho do primeiro processo filho recursivamente. Como o quarto processo filho tem |i=4|, ele
+logo é eliminado do |for|, e portanto não cria processos filhos.
 
 \subsection{Programa 2}
 
-São criados quatro processos filhos e um processo pai. Considere o seguinte grafo:
-
-\begin{figure}[h]
-  \centering{\includegraphics[scale=0.4]{graphs/p2.png}}
-\end{figure}
+São criados quatro processos filhos e um processo pai. Considere a Figura~\ref{p2}.
 
 É possível ver que, assim que criam-se todos os processos com |fork| nas quatro
 iterações, o processo pai termina sua execução. Os processos filhos tem sua paternidade
 automaticamente movida para o processo |init| pelo sistema operacional, o que guarante
 que os processos continuem rodando. Assim que cada um acabar sua execução, a memória de cada
 processo é liberada. Todos os processos filhos são criados pelo processo pai original.
+
+\subsection{Programa 3}
+
+São criados sete processos filhos e um processo pai desde que todos os processos consigam ser
+criados. Como o Grafo de Processos ficaria muito grande, considere a árvore de recursão na
+Figura~\ref{rec_tree}.
+
+\begin{figure}[h]
+  \centering{\includegraphics[scale=0.4]{graphs/p3.png}
+  \caption{Árvore de recursão do Programa 3. Cada nó representa um processo. Uma aresta indica
+  paternidade entre nós. A soma de todos os nós é a quantidade total de processos.}\label{rec_tree}
+  }
+\end{figure}
+
+A criação dos processos é recursiva. Como o |for| acaba apenas se |i>=3| ou se o processo não
+conseguiu ser criado, então cada processo cria uma quantidade de filhos $\mid i-3\mid$. A soma de
+todos os nós é a quantidade de processos do programa. O número de filhos de um nó é o número de
+processos filhos daquele processo. Como |i=0..3| no |for|, então $Ch(j)\leq 3$, onde $Ch(j)$ é o
+conjunto de nós filhos do nó $j$. Um nó $i$ é filho de um nó $j$ se existe uma aresta direcionada
+$j\rightarrow i$. O valor de um nó é o valor do contador |i| local do processo.
+
+\section{Grafos de Processos}~\label{graphs}
+
+\begin{figure}[h]
+  \centering{\includegraphics[scale=0.3]{graphs/p1.png}
+  \caption{É possível ver que o grafo de processos é recursivo neste programa. Cada criação de
+  processo gera um novo subgrafo de processo, que por sua vez cria um novo subgrafo de processo.}\label{p1}
+  }
+\end{figure}
+
+\begin{figure}[h]
+  \centering{\includegraphics[scale=0.4]{graphs/p2.png}
+  \caption{Neste GP, a criação de processos é iterativa. O processo pai percorre o laço criando
+  processos filhos. Os filhos, por sua vez, não iteram pelo laço, já que estes caem na condição de
+  serem filhos, quebrando o laço.}\label{p2}
+  }
+\end{figure}
+
 
 \end{document}

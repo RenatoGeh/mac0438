@@ -16,6 +16,7 @@
 #define UTILS_H_
 
 #include <stdio.h>
+#include <sys/types.h>
 
 /** Logs to stdout. */
 #ifndef _LOG_
@@ -34,7 +35,7 @@ extern int gp_counter;
  *           arg: proc_callback's argument.
  *           res: pointer to the return value of proc_callback.
  */
-int new_proc(int (*proc_callback) (int), int arg, int *res);
+pid_t new_proc(int (*proc_callback) (int), int arg, int *res);
 
 /** Generates a pseudo-random number uniformally distributed in range [0,1).
  */
@@ -47,6 +48,10 @@ int uirand(int min, int max);
 /** Generates a pseudo-random number uniformally distributed in range [min, max].
  */
 double udrand(double min, double max);
+
+/** Generates a pseudo-random number uniformally distributed in range [0, max].
+ */
+double udmrand(double max);
 
 /** Generates a pseudo-random number uniformally distributed in range [min, max).
  */

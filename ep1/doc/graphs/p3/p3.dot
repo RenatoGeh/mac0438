@@ -1,0 +1,11 @@
+digraph {
+  root [label=<<i>i=0</i>>];
+  a1 [label=<<i>i=1</i>>];
+  a2, b1 [label=<<i>i=2</i>>];
+  a3, b2, b3, c1 [label=<<i>i=3</i>>];
+
+  root -> {a1 a2 a3};
+  a1 -> {b1 b2};
+  a2 -> b3;
+  b1 -> c1;
+}

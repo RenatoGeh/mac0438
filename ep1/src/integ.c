@@ -28,13 +28,13 @@ int integ(int s) {
   LOG_STR("Process integ started.");
 
   for (i=0;i<s;++i) {
-    x = udrand(0, 1);
-    y = udrand(0, SEC_1);
+    x = udmrand(1);
+    y = udmrand(SEC_1);
     if (y <= sec(x))
       ++t;
   }
 
-  LOG("Computed area (t/s)*sec(1) = %.5f", ((double)t/(double)s)*SEC_1);
+  LOG("Computed area (t/s)*sec(1) = %f", ((double)t/(double)s)*SEC_1);
   LOG_STR("Expected area int_0^1 sec(x) dx = 1.2261911708835");
 
   LOG_STR("Process integ ready to join.");

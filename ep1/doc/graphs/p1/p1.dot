@@ -1,0 +1,59 @@
+digraph {
+  node [shape=circle];
+
+  pa [shape=box, label="Parent"];
+  for [label=<<i>for i=1..4</i>>];
+  if [shape=diamond, label="Child or Parent?"];
+  fork [label=<<i>fork</i>>];
+  c1 [shape=box, label="Child 1"];
+  c2 [shape=box, label="Child 2"];
+  c3 [shape=box, label="Child 3"];
+  c4 [shape=box, label="Child 4"];
+  sp [label=<<i>sleep</i>>];
+  s1 [label=<<i>sleep</i>>];
+  s2 [label=<<i>sleep</i>>];
+  s3 [label=<<i>sleep</i>>];
+  s4 [label=<<i>sleep</i>>];
+  end [label=<<i>endfor</i>>];
+  kp [label=<<i>kill</i>>];
+  k1 [label=<<i>kill</i>>];
+  k2 [label=<<i>kill</i>>];
+  k3 [label=<<i>kill</i>>];
+  k4 [label=<<i>kill</i>>];
+
+  fork1 [label=<<i>fork</i>>];
+  fork2 [label=<<i>fork</i>>];
+  fork3 [label=<<i>fork</i>>];
+  if1 [shape=diamond, label="Child or Parent?"];
+  if2 [shape=diamond, label="Child or Parent?"];
+  if3 [shape=diamond, label="Child or Parent?"];
+
+  pa -> for;
+  for -> if;
+  if -> fork [label="child"];
+  fork -> c1 [dir=none, label=<<i>i=1</i>>];
+  if -> sp [label="parent"];
+  sp -> kp;
+
+  c1 -> if1;
+  if1 -> fork1 [label="child"];
+  fork1 -> c2 [dir=none, label=<<i>i=2</i>>];
+  if1 -> s1 [label="parent"];
+  s1 -> k1;
+
+  c2 -> if2;
+  if2 -> fork2 [label="child"];
+  fork2 -> c3 [dir=none, label=<<i>i=3</i>>];
+  if2 -> s2 [label="parent"];
+  s2 -> k2;
+
+  c3 -> if3;
+  if3 -> fork3 [label="child"];
+  fork3 -> c4 [dir=none, label=<<i>i=4</i>>];
+  if3 -> s3 [label="parent"];
+  s3 -> k3;
+
+  c4 -> end;
+  end -> s4;
+  s4 -> k4;
+}
