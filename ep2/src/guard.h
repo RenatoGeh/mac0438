@@ -1,3 +1,16 @@
+/*******************************************************************/
+/** MAC 438 - Programacao Concorrente                             **/
+/** IME-USP - Primeiro Semestre de 2016                           **/
+/** Prof. Marcel Parolin Jackowski                                **/
+/**                                                               **/
+/** Segundo Exercicio-Programa                                    **/
+/** Arquivo: guard.h                                              **/
+/**                                                               **/
+/** Renato Lui Geh | 8536030                                      **/
+/**                                                               **/
+/** 24/05/2016                                                    **/
+/*******************************************************************/
+
 #ifndef GUARD_H_
 #define GUARD_H_
 

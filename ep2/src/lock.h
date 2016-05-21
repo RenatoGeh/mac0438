@@ -1,3 +1,16 @@
+/*******************************************************************/
+/** MAC 438 - Programacao Concorrente                             **/
+/** IME-USP - Primeiro Semestre de 2016                           **/
+/** Prof. Marcel Parolin Jackowski                                **/
+/**                                                               **/
+/** Segundo Exercicio-Programa                                    **/
+/** Arquivo: lock.h                                               **/
+/**                                                               **/
+/** Renato Lui Geh | 8536030                                      **/
+/**                                                               **/
+/** 24/05/2016                                                    **/
+/*******************************************************************/
+
 #ifndef LOCK_H_
 #define LOCK_H_
 

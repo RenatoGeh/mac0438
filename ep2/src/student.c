@@ -1,3 +1,16 @@
+/*******************************************************************/
+/** MAC 438 - Programacao Concorrente                             **/
+/** IME-USP - Primeiro Semestre de 2016                           **/
+/** Prof. Marcel Parolin Jackowski                                **/
+/**                                                               **/
+/** Segundo Exercicio-Programa                                    **/
+/** Arquivo: student.c                                            **/
+/**                                                               **/
+/** Renato Lui Geh | 8536030                                      **/
+/**                                                               **/
+/** 24/05/2016                                                    **/
+/*******************************************************************/
+
 #include "student.h"
 
 #include <stdlib.h>

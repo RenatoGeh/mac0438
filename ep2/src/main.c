@@ -1,3 +1,16 @@
+/*******************************************************************/
+/** MAC 438 - Programacao Concorrente                             **/
+/** IME-USP - Primeiro Semestre de 2016                           **/
+/** Prof. Marcel Parolin Jackowski                                **/
+/**                                                               **/
+/** Segundo Exercicio-Programa                                    **/
+/** Arquivo: main.c                                               **/
+/**                                                               **/
+/** Renato Lui Geh | 8536030                                      **/
+/**                                                               **/
+/** 24/05/2016                                                    **/
+/*******************************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -78,7 +91,7 @@ int main(int argc, char *args[]) {
   mutex_lock(&end_lock);
   SLOG("George, your shift is over.");
   has_ended = 1;
-  /* In case George decides to make it to the 2016 Olympics and runs his round too fast. */
+  /* In case George decides to make it to the 2016 Olympics and finishes his round too fast. */
   room_signal();
   mutex_unlock(&end_lock);
 

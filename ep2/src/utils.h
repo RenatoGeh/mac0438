@@ -1,13 +1,14 @@
 /*******************************************************************/
-/** MAC 438 - Programação Concorrente                             **/
+/** MAC 438 - Programacao Concorrente                             **/
 /** IME-USP - Primeiro Semestre de 2016                           **/
 /** Prof. Marcel Parolin Jackowski                                **/
 /**                                                               **/
-/** Segundo Exercício-Programa                                    **/
+/** Segundo Exercicio-Programa                                    **/
 /** Arquivo: utils.h                                              **/
 /**                                                               **/
-/** Renato Lui Geh - 8536030                                      **/
+/** Renato Lui Geh | 8536030                                      **/
 /**                                                               **/
+/** 24/05/2016                                                    **/
 /*******************************************************************/
 
 

@@ -1,0 +1,39 @@
+EP2 - MAC0438
+
+Renato Lui Geh | 8536030
+
+1. Compilar
+
+Para compilar normalmente:
+
+  $ make [ep2]
+
+Onde [.] é algum argumento opcional. Para compilar com as flags '-g -D DEBUG=1', para debug:
+
+  $ make debug
+
+2. Rodar
+
+Para rodar:
+
+  $ ./ep2 <convidados> <minimo-alunos> <intervalo> <tempo_festa> <tempo-ronda>
+
+Onde:
+
+  <convidados>: numero total de convidados para a festa
+  <minimo-alunos>: numero minimo de alunos na festa para o seguranca esvaziar a sala
+  <intervalo>: intervalo maximo de tempo entre chegadas de convidados em ms
+  <tempo-festa>: tempo maximo de participacao na festa para cada aluno em ms
+  <tempo-ronda>: tempo maximo de ronda do seguranca em ms
+
+3. Notas
+
+Rodei com o gcc-multilibs ao invés do gcc. O multilibs se não me engano é para poder rodar 32 e
+64-bits sem ter de mudar o compilador. Não sei se isso vai causar algum problema. Quando rodei com
+'-std=c99' o compilador não achava o POSIX, e quando usei '-ansi' também não encontrava o pthread.
+Deixei sem nenhuma flag de versão, não sei se isso vai dar problema na máquina que vai ser usada
+pra corrigir. Mas já me precavendo, compilei e rodei na seguinte máquina sem nenhum erro:
+
+SO: Arch Linux x86_64 (4.5.4-1-ARCH)
+CC: gcc-multilibs 6.1.1
+
