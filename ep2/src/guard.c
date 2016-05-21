@@ -12,7 +12,6 @@
 #include "room.h"
 #include "student.h"
 
-#define DEBUG 1
 #include "debug.h"
 
 guard_t* create_guard(ms_t s, int p) {

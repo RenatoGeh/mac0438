@@ -1,8 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* Debug: 1 true; 0 false. */
-#define DEBUG 1
+/* Debug: 1 true; 0 false.
+ *
+ * To set DEBUG, compile with target 'debug' instead.
+ *   $ make debug
+ * To compile with no debugging logs:
+ *   $ make
+ */
 #include "debug.h"
 
 #include "utils.h"
@@ -65,6 +70,9 @@ int main(int argc, char *args[]) {
     join_student(st_v[i]);
     LOG("Student %d went home.", i);
   }
+
+  if (room_had_party())
+    tputs("Termino da festa!");
 
   /* Notifies guard duty is over. He may go home. */
   mutex_lock(&end_lock);

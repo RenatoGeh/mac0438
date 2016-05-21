@@ -1,18 +1,14 @@
 CFLAGS = -pedantic -Wall -Wno-unused-result
 LIBS = -lm -lpthread
-DEBUG = false
-
-ifeq ($(DEBUG), true)
-	CFLAGS += -g
-else
-	CFLAGS += -O2
-endif
 
 DEPS = utils.o student.o guard.o room.o lock.o queue.o
 
-all: run
+all: ep2
 
-run: main.o $(DEPS)
+debug: CFLAGS += -g -D DEBUG=1
+debug: ep2
+
+ep2: main.o $(DEPS)
 	gcc $^ -o $@ $(LIBS) $(POSIX)
 
 main.o: main.c

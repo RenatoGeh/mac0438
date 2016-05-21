@@ -1,7 +1,7 @@
 #ifndef DEBUG_H_
 #define DEBUG_H_
 
-#if DEBUG==1
+#ifdef DEBUG
 
 #include "lock.h"
 

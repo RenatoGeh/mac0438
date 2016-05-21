@@ -10,8 +10,6 @@ typedef struct {
   student_t **s_v;
   /* Number of students inside room. */
   int n;
-  /* Queue of possible slots inside room. */
-  queue_t *q;
 } room_t;
 
 extern room_t *g_room;
@@ -33,6 +31,8 @@ void room_signal(void);
 
 /* Waits until the room is cleared. */
 void room_wait(room_t *r);
+
+int room_had_party(void);
 
 /* Destroys the room. D: */
 void destroy_room(room_t *r);

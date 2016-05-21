@@ -9,6 +9,9 @@
 
 room_t *g_room;
 
+/* Did we actually have a party? */
+int had_party;
+
 /* Room mutex. */
 mutex_t room_lock = PTHREAD_MUTEX_INITIALIZER;
 /* Empty conditional variable. */
@@ -26,41 +29,29 @@ room_t* create_room(int n) {
 
   for (i=0;i<n;++i)
     r->s_v[i] = NULL;
-
   r->n = 0;
 
-  r->q = create_queue(n);
-  for (int i=0;i<n;++i)
-    queue_push(r->q, i);
+  had_party = 0;
 
   return r;
 }
 
 void room_push(room_t *r, student_t *s) {
   LOCK;
-  r->s_v[queue_pop(r->q)] = s;
+  r->s_v[s->id] = s;
   ++(r->n);
+  ++had_party;
   UNLOCK;
 }
 
 void room_pop(room_t *r, student_t *s) {
   student_t **s_v = r->s_v;
-  int i, n;
-
   LOCK;
-  for (i=0,n=r->n;i<n;++i)
-    if (s_v[i] == s) {
-      /* Get out, s_v[i]! */
-      queue_push(r->q, i);
-      --(r->n);
-      s_v[i] = NULL;
-      tprintf("N: %d\n", r->n);
-      if (r->n == 0) {
-        room_signal();
-      }
-      UNLOCK;
-      return;
-    }
+  /* Get out, s_v[i]! */
+  s_v[s->id] = NULL;
+  --(r->n);
+  if (r->n == 0)
+    room_signal();
   UNLOCK;
 }
 
@@ -74,20 +65,19 @@ int room_size(room_t *r) {
 
 void room_wait(room_t *r) {
   LOCK;
-  tputs("Seguranca expulsa alunos.");
-  while (r->n > 0) {
+  tputs("Seguranca inspeciona a sala.");
+  if (r->n > 0)
+    tputs("Seguranca expulsa alunos.");
+  while (r->n > 0)
     cond_wait(&empty_cv, &room_lock);
-  }
   UNLOCK;
 }
 
-void destroy_room(room_t *r) {
-  int i, n;
+int room_had_party(void) {
+  return had_party > 0;
+}
 
-  n = r->n;
-  destroy_queue(r->q);
-  for (i=0;i<n;++i)
-    free(r->s_v[i]);
+void destroy_room(room_t *r) {
   free(r->s_v);
   free(r);
 
