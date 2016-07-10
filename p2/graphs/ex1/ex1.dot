@@ -1,0 +1,34 @@
+digraph {
+  rankdir=lr;
+  {
+    rank=same;
+    P1 [label=<P<sub>1</sub>>, shape=circle];
+  }
+  {
+    rank=same;
+    P2 [label=<P<sub>2</sub>>, shape=circle];
+    P3 [label=<P<sub>3</sub>>, shape=circle];
+    S1 [label=<S<sub>1</sub>>, shape=rectangle];
+  }
+  {
+    rank=same;
+    S2 [label=<S<sub>2</sub>>, shape=rectangle];
+    P4 [label=<P<sub>4</sub>>, shape=circle];
+  }
+  {
+    rank=same;
+    P5 [label=<P<sub>5</sub>>, shape=circle];
+    S3 [label=<S<sub>3</sub>>, shape=rectangle];
+  }
+
+  P1 -> P2;
+  P1 -> P3;
+  P2 -> S1 [dir=none];
+  P2 -> P4;
+  S2 -> P4 [dir=none];
+  S1 -> P3 [dir=none];
+  P3 -> P5;
+  P4 -> P5;
+  P5 -> S3 [dir=none];
+
+}

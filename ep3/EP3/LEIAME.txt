@@ -1,0 +1,112 @@
+
+1. Visao geral do projeto Whiteboard em Java
+--------------------------------------------
+
+Este projeto implementa o projeto Whiteboard na linguagem Java
+usando RMI, mas deixa alguns trechos para voce COMPLETAR! Leia
+todo o código disponilizado e entenda o seu funcionamento.
+
+2. Arquivos
+-----------
+
+   LineCoords.java        /* estrutura de dados publica para uma linha */
+   BoardFrame.java        /* interface da lousa */
+   BoardFrameImpl.java    /* implementação da lousa */
+   WbAdmin.java           /* interface do administrator */
+   WbClient.java          /* interface do cliente Whiteboard */
+   WbClientImpl.java      /* implementacao do cliente Whiteboard */
+   WbServer.java          /* interface do servidor Whiteboard */
+   WbServerImpl.java      /* implementacao do servidor Whiteboard */
+
+Crie um diretorio chamado de Whiteboard e deposito os arquivos acima.
+
+3. Como compilar
+----------------
+
+Tenha certeza que o seu CLASSPATH inclui os diretorios . e .. e que o
+JDK esteja no seu PATH.
+
+rm -f Whiteboard/*.class
+javac Whiteboard/*.java    
+
+4. Como rodar
+-------------
+
+Existem varios jeitos de executar este programa distribuido. Este e um
+exemplo:
+
+ rmiregistry &
+ java Whiteboard.WbServerImpl 1 localhost &
+ java Whiteboard.WbClientImpl 22 b0 localhost rmi://localhost:1099/S1 &
+ java Whiteboard.WbClientImpl 4  b0 localhost rmi://localhost:1099/S1 &
+ java Whiteboard.WbClientImpl 7 b2 localhost rmi://localhost:1099/S1 &
+ java Whiteboard.WbClientImpl 65 b2 localhost rmi://localhost:1099/S1 &
+
+(Se a porta 1099 ja esteja em uso, voce precisara editar Invoke.java)
+
+Esta lista de comandos iniciara um servidor. Ele imprimira o seu URL, 
+e.g., //localhost/S1. Duas lousas tambem são criadas contendo dois clientes
+cada uma.
+
+De forma geral, para criar um cliente faca:
+
+ java WhiteBoard.WbClientImpl <idn> <nome-lousa> <maquina-display> <URL-servidor>
+
+<idn> representa um inteiro arbitrario nao negativo usado como pseudo process id. 
+No momento o unico valor razoavel para <maquina-display> e "localhost". Um exemplo 
+de URL para o servidor e //localhost/S1. O processo cliente iniciara um processo 
+BoardFrame. Esta tarefa levara alguns segundos.
+
+Alternativamente, voce podera executar estes comandos usando o programa WbAdmin:
+
+	java Whiteboard.WbAdmin
+
+A desvantagem e que o stdout nao sera visto.
+
+5. Estilo
+---------
+
+Eu fui bem descuidado em relacao ao OOP, e.g., public/private/protected,
+utilizando as excecoes mais genericas, etc.
+
+6. O que voce deve implementar
+------------------------------
+
+O arquivo WbAdmin.java mostra um rascunho de um gerenciador de servidores de
+lousas. Voce deve terminar a implementacao desse servidor de forma a garantir o 
+funcionamento de todas as operacoes disponibilizadas: criacao de servidores, 
+criacao de clientes, emissao de relatorio, e tranferencia de lousa entre servidores.
+A criacao de servidores e clientes ja foi feita, e voce precisara somente implementar
+as duas operacoes a seguir.
+
+	6.1 Emissao de relatorio
+	------------------------
+
+	Voce deve mostrar na tela uma lista de todos os servidores, suas respectivas 
+	lousas e clientes. 
+
+	6.2 Transferencia de lousas
+	---------------------------
+
+	Nesta subtarefa, voce devera transferir o controle de uma lousa de um servidor 
+	origem para um servidor destino. Voce perguntara ao usuario o nome da lousa,
+	e o URL dos servidores origem e destino. Assuma que existirao identificadores
+	unicos para servidores, clientes e lousas. Apos essa operacao, as lousas deverao 
+	continuar funcionando. O termino de todos os processos devem continuar a acontecer 
+	de forma graciosa. 
+
+7. Avaliacao
+------------
+
+30% pela implementacao correta do relatorio
+50% pela implementacao correta da transferencia de lousas
+20% pela clareza do seu codigo e documentacao da sua solucao
+
+8. Submissao
+------------
+
+Entregue um arquivo compactado contendo a sua solucao completa. Adicione o seu LEIAME.txt
+para refletir as mudancas que voce fez no codigo.
+
+
+/* -eof- */

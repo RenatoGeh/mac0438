@@ -1,0 +1,20 @@
+MAC0438 - EP3 - 2016
+Prof: Marcel Jackowski
+
+Renato Lui Geh
+NUSP: 8536030
+
+Compilação e execução:
+======================
+
+Rode run.sh para rodar o EP. O arquivo apenas deleta os *.class, recompila os *.java, cria um novo
+processo rmiregistry e em seguida roda WbAdmin.
+
+O script kill.sh simplesmente faz killall em rmiregistry e java.
+
+Código:
+=======
+
+Foram implementados os métodos de relatório dos servidores e transferência de boards. Além disso,
+foi também implementada uma procura por servidores pré-existentes.
+
